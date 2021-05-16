@@ -1488,16 +1488,16 @@ func (cc *ClientConn) encodeHeaders(req *http.Request, addGzipHeader bool, trail
 	// Check for any invalid headers and return an error before we
 	// potentially pollute our hpack state. (We want to be able to
 	// continue to reuse the hpack encoder for future requests)
-	for k, vv := range req.Header {
-		if !httpguts.ValidHeaderFieldName(k) {
-			return nil, fmt.Errorf("invalid HTTP header name %q", k)
-		}
-		for _, v := range vv {
-			if !httpguts.ValidHeaderFieldValue(v) {
-				return nil, fmt.Errorf("invalid HTTP header value %q for header %q", v, k)
-			}
-		}
-	}
+	//for k, vv := range req.Header {
+	//	if !httpguts.ValidHeaderFieldName(k) {
+	//		return nil, fmt.Errorf("invalid HTTP header name %q", k)
+	//	}
+	//	for _, v := range vv {
+	//		if !httpguts.ValidHeaderFieldValue(v) {
+	//			return nil, fmt.Errorf("invalid HTTP header value %q for header %q", v, k)
+	//		}
+	//	}
+	//}
 
 	enumerateHeaders := func(f func(name, value string)) {
 		// 8.1.2.3 Request Pseudo-Header Fields
